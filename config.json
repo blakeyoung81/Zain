@@ -1,0 +1,83 @@
+{
+  "website": {
+    "title": "Robotics Portfolio Website",
+    "author": "Musheng He",
+    "version": "1.0.0",
+    "description": "Professional portfolio showcasing robotics projects and research",
+    "keywords": ["robotics", "machine learning", "computer vision", "portfolio", "engineering"]
+  },
+  "development": {
+    "server": {
+      "port": 8080,
+      "host": "localhost",
+      "protocol": "http"
+    },
+    "build": {
+      "minifyCSS": false,
+      "minifyJS": false,
+      "optimizeImages": false
+    }
+  },
+  "social": {
+    "github": "https://github.com/mushenghe",
+    "linkedin": "https://www.linkedin.com/in/musheng-he-a50277176/",
+    "email": "mushenghe2020@u.northwestern.edu"
+  },
+  "projects": [
+    {
+      "id": "muscle-synergy",
+      "title": "Muscle Synergy Identification",
+      "category": "Machine Learning",
+      "technologies": ["Python", "MATLAB", "NMF", "Signal Processing"],
+      "status": "completed"
+    },
+    {
+      "id": "healer-baxter",
+      "title": "Healer Baxter",
+      "category": "Robotics",
+      "technologies": ["Deep Learning", "TensorFlow", "ROS", "Computer Vision"],
+      "status": "completed"
+    },
+    {
+      "id": "terminator",
+      "title": "Terminator",
+      "category": "Robotics",
+      "technologies": ["ROS", "Computer Vision", "Motion Planning", "Python"],
+      "status": "completed"
+    },
+    {
+      "id": "mobile-manipulation",
+      "title": "Mobile Manipulation",
+      "category": "Robotics",
+      "technologies": ["KUKA youBot", "V-REP", "Motion Planning", "Manipulation"],
+      "status": "completed"
+    },
+    {
+      "id": "visual-pushing-grasping",
+      "title": "Visual Pushing and Grasping",
+      "category": "AI/ML",
+      "technologies": ["Deep Reinforcement Learning", "PyTorch", "Docker"],
+      "status": "completed"
+    },
+    {
+      "id": "image-mosaic",
+      "title": "ImageMosaic",
+      "category": "Computer Vision",
+      "technologies": ["MATLAB", "Python", "SURF", "RANSAC"],
+      "status": "completed"
+    },
+    {
+      "id": "dynamics-simulation",
+      "title": "Pin-triangle Dynamics Simulation",
+      "category": "Simulation",
+      "technologies": ["Python", "Physics Simulation", "Dynamics"],
+      "status": "completed"
+    }
+  ],
+  "assets": {
+    "images": "img/",
+    "css": "css/",
+    "js": "js/",
+    "vendor": "vendor/"
+  }
+} 
