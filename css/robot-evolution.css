@@ -373,6 +373,14 @@ html {
     z-index: 1;
 }
 
+.evolution-banner-image {
+    max-width: 100%;
+    border-radius: 15px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.15);
+}
+
 /* ===== EVOLUTION SECTION ===== */
 .evolution-section {
     padding: 120px 0;
@@ -392,7 +400,7 @@ html {
     position: relative;
     display: flex;
     padding: 40px 0;
-    width: 1600px; /* Adjust width to fit all items */
+    width: 3300px;
     margin: 0 auto;
 }
 
@@ -930,4 +938,4 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--gradient-secondary);
-} 
+}
