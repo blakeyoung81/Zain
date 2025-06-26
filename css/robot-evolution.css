@@ -164,14 +164,14 @@ html {
 @keyframes profileGlow {
     from { 
         box-shadow: 
-            0 0 30px rgba(0, 255, 255, 0.5),
-            inset 0 0 30px rgba(0, 255, 255, 0.1);
+            0 0 20px rgba(0, 255, 255, 0.3),
+            inset 0 0 20px rgba(0, 255, 255, 0.1);
     }
     to { 
         box-shadow: 
-            0 0 50px rgba(0, 255, 255, 0.8),
-            0 0 100px rgba(139, 0, 255, 0.3),
-            inset 0 0 30px rgba(0, 255, 255, 0.2);
+            0 0 35px rgba(0, 255, 255, 0.5),
+            0 0 60px rgba(139, 0, 255, 0.2),
+            inset 0 0 25px rgba(0, 255, 255, 0.15);
     }
 }
 
@@ -219,8 +219,8 @@ html {
 }
 
 @keyframes glowText {
-    from { text-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
-    to { text-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 40px rgba(139, 0, 255, 0.5); }
+    from { text-shadow: 0 0 10px rgba(0, 255, 255, 0.4); }
+    to { text-shadow: 0 0 15px rgba(0, 255, 255, 0.6), 0 0 25px rgba(139, 0, 255, 0.3); }
 }
 
 .hero-description {
@@ -232,6 +232,8 @@ html {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    background: var(--darker-bg);
+    border-top: 1px solid var(--cyber-blue);
 }
 
 .hero-stats {
@@ -267,21 +269,22 @@ html {
     font-family: 'Orbitron', monospace;
     font-weight: 700;
     padding: 15px 40px;
-    background: var(--gradient-primary);
-    border: none;
+    background: transparent;
+    border: 2px solid var(--cyber-blue);
     border-radius: 50px;
-    color: var(--text-light);
+    color: var(--cyber-blue);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
 }
 
 .btn-hero:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.5);
-    color: var(--text-light);
+    background: var(--cyber-blue);
+    color: var(--dark-bg);
+    box-shadow: 0 5px 25px rgba(0, 255, 255, 0.4);
     text-decoration: none;
 }
 
@@ -294,14 +297,14 @@ html {
 }
 
 .hero-badge {
-    background: var(--gradient-accent);
-    color: var(--text-light);
+    background: rgba(0, 255, 255, 0.1);
+    color: var(--cyber-blue);
     padding: 8px 20px;
     border-radius: 25px;
     font-size: 0.9rem;
     font-weight: 600;
     font-family: 'Orbitron', monospace;
-    border: 2px solid transparent;
+    border: 1px solid var(--cyber-blue);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -323,9 +326,10 @@ html {
 }
 
 .hero-badge:hover {
-    border-color: var(--neon-green);
+    background: var(--cyber-blue);
+    color: var(--dark-bg);
     transform: scale(1.05);
-    box-shadow: 0 5px 20px rgba(57, 255, 20, 0.3);
+    box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
 }
 
 .matrix-rain {
@@ -409,11 +413,11 @@ html {
     top: 50%;
     left: 0;
     right: 0;
-    height: 6px;
-    background: var(--gradient-primary);
+    height: 4px;
+    background: var(--cyber-blue);
     transform: translateY(-50%);
-    border-radius: 3px;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    border-radius: 2px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
 }
 
 .timeline-item {
@@ -423,6 +427,9 @@ html {
     cursor: pointer;
     transition: transform 0.3s ease;
     flex-shrink: 0;
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 1rem;
 }
 
 .timeline-item:hover {
@@ -485,24 +492,32 @@ html {
 
 .timeline-description {
     color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 10px;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .timeline-year {
-    background: var(--gradient-accent);
-    color: var(--text-light);
-    padding: 5px 15px;
+    background: rgba(0, 255, 255, 0.1);
+    color: var(--cyber-blue);
+    padding: 6px 16px;
     border-radius: 20px;
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 700;
     font-family: 'Orbitron', monospace;
+    border: 1px solid var(--cyber-blue);
     display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-year {
+    background: var(--cyber-blue);
+    color: var(--dark-bg);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
 }
 
 /* Scrollbar for timeline */
 .evolution-timeline-container::-webkit-scrollbar {
-    height: 8px;
+    height: 12px;
 }
 
 .evolution-timeline-container::-webkit-scrollbar-track {
@@ -558,19 +573,19 @@ html {
 
 .achievement-card:hover {
     border-color: var(--neon-green);
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(57, 255, 20, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(57, 255, 20, 0.15);
 }
 
 .achievement-icon {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     background: var(--gradient-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
+    margin: 0 auto 25px;
 }
 
 .achievement-icon i {
@@ -632,7 +647,7 @@ html {
 .tech-category:hover {
     border-color: var(--electric-purple);
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(139, 0, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(139, 0, 255, 0.15);
 }
 
 .tech-category h4 {
@@ -643,6 +658,7 @@ html {
     display: flex;
     align-items: center;
     gap: 10px;
+    pointer-events: none;
 }
 
 .tech-category h4 i {
@@ -789,6 +805,19 @@ html {
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1200px) {
+    .hero-evolution-graphic {
+        opacity: 0.08;
+        width: 400px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-evolution-graphic {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
     .hero-section {
         padding: 100px 0 60px;
@@ -938,4 +967,15 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--gradient-secondary);
+}
+
+.hero-evolution-graphic {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 500px;
+    opacity: 0.1;
+    z-index: 0;
+    pointer-events: none;
 }
