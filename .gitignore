@@ -74,4 +74,9 @@ ENV/
 
 # ===== Distribution/Build Folders =====
 dist/
-build/ 
+build/
+
+*.code-workspace
+*.mov
+
+*.mov 
