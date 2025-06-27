@@ -28,15 +28,9 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Orbitron:400,700,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Exo+2:300,400,600,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 
-    <!-- Theme CSS -->
-    <link href="css/agency.min.css" rel="stylesheet">
-    <link href="css/custom/robot-evolution.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/robot-evolution.css" rel="stylesheet">
 
   </head>
 
@@ -68,50 +62,57 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
             </li>
-            <li class="nav-item-evolution-logo">
-              <img src="img/Evolution.png" alt="Robot Evolution" class="evolution-nav-logo">
-            </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!-- Hero Section -->
+        <!-- Hero Section -->
     <header class="hero-section">
-      <div class="container hero-content">
-        <img class="hero-profile-img" src="img/zain-profile.jpg" alt="Zain Hamdia Profile">
-        <h1 class="hero-title">ZAIN HAMDIA</h1>
-        <h2 class="hero-subtitle">ROBOTICS EVOLUTION</h2>
-        <p class="hero-description">Princeton Day School | Robotics Innovator | Future Engineer</p>
-        
-        <div class="hero-stats">
-          <div class="stat-item">
-            <div class="stat-number">11</div>
-            <div class="stat-label">Years of Innovation</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">5</div>
-            <div class="stat-label">Robot Generations</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">11</div>
-            <div class="stat-label">Countries Visited</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">6</div>
-            <div class="stat-label">Leadership Roles</div>
-          </div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-12 text-center">
+                    <div class="hero-content">
+                        <div class="hero-avatar">
+                            <img src="img/zain-profile.jpg" alt="Zain Hamdia" class="hero-profile">
+                            <div class="avatar-glow"></div>
+                        </div>
+                        <h1 class="hero-title">ZAIN HAMDIA</h1>
+                        <h2 class="hero-subtitle">ROBOTICS EVOLUTION</h2>
+                        <p class="hero-description">Princeton Day School | Robotics Innovator | Future Engineer</p>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">11</div>
+                                <div class="stat-label">Years of Innovation</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">5</div>
+                                <div class="stat-label">Robot Generations</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">11</div>
+                                <div class="stat-label">Countries Visited</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">6</div>
+                                <div class="stat-label">Leadership Roles</div>
+                            </div>
+                        </div>
+                        <div class="hero-badges">
+                            <span class="hero-badge">Co-President: Robotics Club</span>
+                            <span class="hero-badge">Co-President: Maker Club</span>
+                            <span class="hero-badge">Princeton University Intern</span>
+                        </div>
+                        <a href="#evolution" class="btn btn-hero js-scroll-trigger">
+                            <i class="fas fa-rocket"></i> INITIATE EVOLUTION SEQUENCE
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="hero-badges">
-          <span class="hero-badge">Co-President: Robotics Club</span>
-          <span class="hero-badge">Co-President: Maker Club</span>
-          <span class="hero-badge">Princeton University Intern</span>
-        </div>
-        
-        <a href="#evolution" class="btn btn-xl btn-initiate-sequence js-scroll-trigger">
-          <i class="fas fa-rocket"></i> INITIATE EVOLUTION SEQUENCE
-        </a>
-      </div>
+        <div class="hero-particles"></div>
+        <div class="matrix-rain"></div>
+        <img src="img/Evolution.png" alt="Robotics Evolution Graphic" class="hero-evolution-graphic">
     </header>
 
     <!-- Robot Evolution Section -->
@@ -363,7 +364,98 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-            <div id="map"></div>
+            <div class="world-map-container">
+              <div class="world-map">
+                <!-- Map markers for each location -->
+                <div class="map-marker" data-location="costa-rica" style="top: 65%; left: 20%;">
+                  <div class="marker-pulse"></div>
+                  <div class="marker-tooltip">
+                    <h4>Orosi Valley, Costa Rica</h4>
+                    <p>International Travel & Research</p>
+                  </div>
+                </div>
+                
+                <div class="map-marker" data-location="london" style="top: 35%; left: 48%;">
+                  <div class="marker-pulse"></div>
+                  <div class="marker-tooltip">
+                    <h4>London, UK</h4>
+                    <p>International Travel & Research</p>
+                  </div>
+                </div>
+                
+                <div class="map-marker" data-location="paris" style="top: 38%; left: 50%;">
+                  <div class="marker-pulse"></div>
+                  <div class="marker-tooltip">
+                    <h4>Paris, France</h4>
+                    <p>International Travel & Research</p>
+                  </div>
+                </div>
+                
+                <div class="map-marker" data-location="cairo" style="top: 50%; left: 55%;">
+                  <div class="marker-pulse"></div>
+                  <div class="marker-tooltip">
+                    <h4>Cairo, Egypt</h4>
+                    <p>Maker Faire Presentation</p>
+                  </div>
+                </div>
+                
+                <div class="map-marker" data-location="el-gouna" style="top: 52%; left: 56%;">
+                  <div class="marker-pulse"></div>
+                  <div class="marker-tooltip">
+                    <h4>El Gouna, Egypt</h4>
+                    <p>International Travel & Research</p>
+                  </div>
+                </div>
+                
+                <div class="map-marker" data-location="milan" style="top: 40%; left: 52%;">
+                  <div class="marker-pulse"></div>
+                  <div class="marker-tooltip">
+                    <h4>Milan, Italy</h4>
+                    <p>International Travel & Research</p>
+                  </div>
+                </div>
+                
+                <div class="map-marker" data-location="pisa" style="top: 42%; left: 51%;">
+                  <div class="marker-pulse"></div>
+                  <div class="marker-tooltip">
+                    <h4>Pisa, Italy</h4>
+                    <p>International Travel & Research</p>
+                  </div>
+                </div>
+                
+                <div class="map-marker" data-location="venice" style="top: 39%; left: 53%;">
+                  <div class="marker-pulse"></div>
+                  <div class="marker-tooltip">
+                    <h4>Venice, Italy</h4>
+                    <p>International Travel & Research</p>
+                  </div>
+                </div>
+                
+                <div class="map-marker" data-location="florence" style="top: 42%; left: 52%;">
+                  <div class="marker-pulse"></div>
+                  <div class="marker-tooltip">
+                    <h4>Florence, Italy</h4>
+                    <p>International Travel & Research</p>
+                  </div>
+                </div>
+                
+                <div class="map-marker" data-location="brussels" style="top: 36%; left: 50%;">
+                  <div class="marker-pulse"></div>
+                  <div class="marker-tooltip">
+                    <h4>Brussels, Belgium</h4>
+                    <p>Maker Faire Opening Ceremony</p>
+                  </div>
+                </div>
+                
+                <div class="map-marker" data-location="sarajevo" style="top: 43%; left: 54%;">
+                  <div class="marker-pulse"></div>
+                  <div class="marker-tooltip">
+                    <h4>Sarajevo, Bosnia and Herzegovina</h4>
+                    <p>International Travel & Research</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -469,19 +561,10 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Contact form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="js/agency.min.js"></script>
-    <script src="js/custom/robot-evolution.js"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script src="js/custom/zain-custom.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/robot-evolution.js"></script>
 
   </body>
 
