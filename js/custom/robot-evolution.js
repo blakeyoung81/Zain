@@ -257,11 +257,9 @@ function initializeSmoothScrolling() {
                 // Calculate target position accounting for fixed navbar
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
                 
-                // Instant scroll - no animation for zippy navigation
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'auto' // Changed from 'smooth' to 'auto' for instant navigation
-                });
+                // Absolutely instant scroll - no scrollTo methods at all
+                document.documentElement.scrollTop = targetPosition;
+                document.body.scrollTop = targetPosition; // For Safari
             }
         });
     });
