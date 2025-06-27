@@ -250,9 +250,17 @@ function initializeSmoothScrolling() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                // Get navbar height to offset scroll position
+                const navbar = document.getElementById('mainNav');
+                const navbarHeight = navbar ? navbar.offsetHeight : 70;
+                
+                // Calculate target position accounting for fixed navbar
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                
+                // Instant scroll - no animation for zippy navigation
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'auto' // Changed from 'smooth' to 'auto' for instant navigation
                 });
             }
         });
