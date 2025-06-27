@@ -205,4 +205,46 @@ $(document).ready(function() {
             });
         }, 1000);
     });
+
+    // LEAFLET MAP INITIALIZATION
+    const mapElement = document.getElementById('map');
+    if (mapElement) {
+        const map = L.map('map', {
+            scrollWheelZoom: false,
+            center: [30, 15],
+            zoom: 2
+        });
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
+        }).addTo(map);
+
+        const locations = [
+            { name: "Orosi Valley, Costa Rica", coords: [9.79, -83.85], note: "International Travel & Research" },
+            { name: "London, UK", coords: [51.50, -0.12], note: "International Travel & Research" },
+            { name: "Paris, France", coords: [48.85, 2.35], note: "International Travel & Research" },
+            { name: "Cairo, Egypt", coords: [30.04, 31.23], note: "Maker Faire Presentation" },
+            { name: "El Gouna, Egypt", coords: [27.39, 33.67], note: "International Travel & Research" },
+            { name: "Milan, Italy", coords: [45.46, 9.19], note: "International Travel & Research" },
+            { name: "Pisa, Italy", coords: [43.72, 10.40], note: "International Travel & Research" },
+            { name: "Venice, Italy", coords: [45.44, 12.31], note: "International Travel & Research" },
+            { name: "Florence, Italy", coords: [43.76, 11.25], note: "International Travel & Research" },
+            { name: "Brussels, Belgium", coords: [50.85, 4.35], note: "Maker Faire Opening Ceremony" },
+            { name: "Sarajevo, Bosnia & Herzegovina", coords: [43.85, 18.41], note: "International Travel & Research" }
+        ];
+
+        const customIcon = L.divIcon({
+            className: 'custom-div-icon',
+            html: "<div class='marker-pin'></div>",
+            iconSize: [30, 42],
+            iconAnchor: [15, 42]
+        });
+
+        locations.forEach(loc => {
+            L.marker(loc.coords, { icon: customIcon }).addTo(map)
+                .bindPopup(`<h4>${loc.name}</h4><p>${loc.note}</p>`);
+        });
+    }
 }); 
