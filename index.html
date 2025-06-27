@@ -514,9 +514,20 @@
           .addTo(map);
       });
 
-      map.on('load', function () {
+      // Ensure the map resizes correctly
+      map.on('load', () => {
           map.resize();
       });
+
+      // Add a listener to resize the map when the window is resized
+      window.addEventListener('resize', () => {
+          map.resize();
+      });
+
+      // A small timeout can also help ensure rendering completes
+      setTimeout(() => {
+          map.resize();
+      }, 100);
 
     </script>
 
