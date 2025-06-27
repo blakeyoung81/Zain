@@ -211,8 +211,6 @@ $(document).ready(function() {
     if (mapElement) {
         const map = L.map('map', {
             scrollWheelZoom: false,
-            center: [30, 15],
-            zoom: 2
         });
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -241,10 +239,19 @@ $(document).ready(function() {
             iconSize: [30, 42],
             iconAnchor: [15, 42]
         });
+        
+        const markerGroup = L.featureGroup();
 
         locations.forEach(loc => {
-            L.marker(loc.coords, { icon: customIcon }).addTo(map)
+            const marker = L.marker(loc.coords, { icon: customIcon })
                 .bindPopup(`<h4>${loc.name}</h4><p>${loc.note}</p>`);
+            markerGroup.addLayer(marker);
         });
+        
+        markerGroup.addTo(map);
+        
+        if (markerGroup.getLayers().length > 0) {
+            map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
+        }
     }
 }); 

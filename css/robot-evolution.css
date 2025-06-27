@@ -107,108 +107,45 @@ html {
 
 /* ===== HERO SECTION ===== */
 .hero-section {
-    min-height: 100vh;
-    background: var(--darker-bg);
     position: relative;
-    display: flex;
-    align-items: center;
+    padding: 180px 0 100px;
+    background: radial-gradient(ellipse at 50% 50%, rgba(13, 17, 23, 0.95) 0%, #0d1117 70%),
+                radial-gradient(ellipse at 20% 40%, rgba(0, 191, 255, 0.2) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(148, 0, 211, 0.2) 0%, transparent 60%);
+    color: var(--text-light);
     overflow: hidden;
-    padding: 120px 0 80px;
-}
-
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 80%, var(--cyber-blue) 0%, transparent 40%),
-        radial-gradient(circle at 80% 20%, var(--electric-purple) 0%, transparent 40%);
-    opacity: 0.15;
-    animation: pulseGradient 10s ease-in-out infinite;
-}
-
-@keyframes pulseGradient {
-    0%, 100% { opacity: 0.1; }
-    50% { opacity: 0.2; }
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
     text-align: center;
 }
 
-.hero-avatar {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 3rem;
-    margin-top: 2rem;
-}
-
-.hero-profile {
+.hero-profile-img {
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    border: 3px solid var(--cyber-blue);
-    box-shadow: 
-        0 0 25px rgba(0, 191, 255, 0.2);
-    animation: profileGlow 4s ease-in-out infinite alternate;
-}
-
-@keyframes profileGlow {
-    from { 
-        box-shadow: 
-            0 0 25px rgba(0, 191, 255, 0.2);
-    }
-    to { 
-        box-shadow: 
-            0 0 40px rgba(0, 191, 255, 0.3),
-            0 0 60px rgba(147, 112, 219, 0.1);
-    }
-}
-
-.avatar-glow {
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    border-radius: 50%;
-    background: conic-gradient(var(--cyber-blue), var(--electric-purple), var(--cyber-blue));
-    opacity: 0.2;
-    animation: rotate 6s linear infinite;
-    z-index: -1;
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    border: 4px solid var(--cyber-blue);
+    margin: 0 auto 30px;
+    box-shadow: 0 0 30px rgba(0, 191, 255, 0.4);
 }
 
 .hero-title {
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--text-light);
-    margin-bottom: 0.5rem;
-    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    margin-bottom: 1rem;
 }
 
 .hero-subtitle {
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     font-size: 4rem;
-    font-weight: 800;
-    color: var(--cyber-blue);
-    margin-bottom: 1.5rem;
-    letter-spacing: 2px;
-}
-
-@keyframes glowText {
-    from { text-shadow: 0 0 5px rgba(0, 191, 255, 0.2); }
-    to { text-shadow: 0 0 10px rgba(0, 191, 255, 0.4); }
+    font-weight: 900;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--cyber-blue), #c37aff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 25px rgba(0, 191, 255, 0.4), 0 0 45px rgba(195, 122, 255, 0.3);
+    margin: 0 auto 2rem;
+    max-width: 900px;
 }
 
 .hero-description {
@@ -392,10 +329,11 @@ html {
 
 .evolution-timeline {
     position: relative;
-    display: flex;
-    padding: 40px 0;
-    width: 3300px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 140px 40px; /* Increased padding-top */
+    display: flex;
+    justify-content: space-between;
 }
 
 .evolution-path {
@@ -1045,6 +983,7 @@ html {
     padding: 120px 0;
     background: var(--dark-bg);
     position: relative;
+    z-index: 1; /* Ensure proper stacking */
 }
 
 #map {
