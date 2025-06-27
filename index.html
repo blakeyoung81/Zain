@@ -23,13 +23,14 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Exo+2:300,400,600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
     <!-- Custom CSS -->
     <link href="css/robot-evolution.css" rel="stylesheet">
@@ -365,27 +366,27 @@
             <p class="section-subtitle">International research presentations and travels across the globe</p>
           </div>
         </div>
-        <div class="row align-items-center">
-          <div class="col-lg-8">
-            <div class="world-map-container">
-              <div id="map"></div>
+        <div class="row align-items-stretch">
+          <div class="col-lg-8 mb-4 mb-lg-0">
+            <div class="world-map-container h-100">
+              <div id="map" class="h-100"></div>
             </div>
           </div>
           <div class="col-lg-4">
-            <div class="location-list">
-              <h3 class="list-title">Visited Locations</h3>
+            <div class="location-list h-100">
+              <h3 class="list-title"><i class="fas fa-globe-americas me-2"></i>Visited Locations</h3>
               <ul>
-                <li>Orosi Valley, Costa Rica</li>
-                <li>London, UK</li>
-                <li>Paris, France</li>
-                <li>Cairo, Egypt</li>
-                <li>El Gouna, Egypt</li>
-                <li>Milan, Italy</li>
-                <li>Pisa, Italy</li>
-                <li>Venice, Italy</li>
-                <li>Florence, Italy</li>
-                <li>Brussels, Belgium</li>
-                <li>Sarajevo, Bosnia & Herzegovina</li>
+                <li><i class="fas fa-map-marker-alt"></i>Orosi Valley, Costa Rica</li>
+                <li><i class="fas fa-map-marker-alt"></i>London, UK</li>
+                <li><i class="fas fa-map-marker-alt"></i>Paris, France</li>
+                <li><i class="fas fa-map-marker-alt"></i>Cairo, Egypt</li>
+                <li><i class="fas fa-map-marker-alt"></i>El Gouna, Egypt</li>
+                <li><i class="fas fa-map-marker-alt"></i>Milan, Italy</li>
+                <li><i class="fas fa-map-marker-alt"></i>Pisa, Italy</li>
+                <li><i class="fas fa-map-marker-alt"></i>Venice, Italy</li>
+                <li><i class="fas fa-map-marker-alt"></i>Florence, Italy</li>
+                <li><i class="fas fa-map-marker-alt"></i>Brussels, Belgium</li>
+                <li><i class="fas fa-map-marker-alt"></i>Sarajevo, Bosnia & Herzegovina</li>
               </ul>
             </div>
           </div>
@@ -504,48 +505,63 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        const map = L.map('map', {
-          zoomControl: false,
-          scrollWheelZoom: false,
-        });
+        // A more robust way to ensure map initializes after layout is stable
+        const mapElement = document.getElementById('map');
+        const observer = new IntersectionObserver(function(entries) {
+          if(entries[0].isIntersecting) {
+            initializeMap();
+            observer.disconnect(); // Run once
+          }
+        }, { threshold: 0.1 });
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-          maxZoom: 18,
-          subdomains: 'abcd'
-        }).addTo(map);
+        observer.observe(mapElement);
 
-        const locations = [
-          { name: "Orosi Valley, Costa Rica", coords: [9.79, -83.85], detail: "International Travel & Research" },
-          { name: "London, UK", coords: [51.5072, -0.1276], detail: "International Travel & Research" },
-          { name: "Paris, France", coords: [48.8566, 2.3522], detail: "International Travel & Research" },
-          { name: "Cairo, Egypt", coords: [30.0444, 31.2357], detail: "Maker Faire Presentation" },
-          { name: "El Gouna, Egypt", coords: [27.3943, 33.6765], detail: "International Travel & Research" },
-          { name: "Milan, Italy", coords: [45.4642, 9.1900], detail: "International Travel & Research" },
-          { name: "Pisa, Italy", coords: [43.7228, 10.4017], detail: "International Travel & Research" },
-          { name: "Venice, Italy", coords: [45.4408, 12.3155], detail: "International Travel & Research" },
-          { name: "Florence, Italy", coords: [43.7696, 11.2558], detail: "International Travel & Research" },
-          { name: "Brussels, Belgium", coords: [50.8503, 4.3517], detail: "Maker Faire Opening Ceremony" },
-          { name: "Sarajevo, Bosnia & Herzegovina", coords: [43.8563, 18.4131], detail: "International Travel & Research" }
-        ];
+        function initializeMap() {
+          const map = L.map('map', {
+            zoomControl: false,
+            scrollWheelZoom: false,
+          });
 
-        const pulsingIcon = L.divIcon({
-          className: 'leaflet-pulsing-icon',
-          iconSize: [16, 16],
-          iconAnchor: [8, 8],
-          popupAnchor: [0, -12]
-        });
+          L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            maxZoom: 18,
+            subdomains: 'abcd'
+          }).addTo(map);
 
-        const bounds = L.latLngBounds();
+          const locations = [
+            { name: "Orosi Valley, Costa Rica", coords: [9.79, -83.85], detail: "International Travel & Research" },
+            { name: "London, UK", coords: [51.5072, -0.1276], detail: "International Travel & Research" },
+            { name: "Paris, France", coords: [48.8566, 2.3522], detail: "International Travel & Research" },
+            { name: "Cairo, Egypt", coords: [30.0444, 31.2357], detail: "Maker Faire Presentation" },
+            { name: "El Gouna, Egypt", coords: [27.3943, 33.6765], detail: "International Travel & Research" },
+            { name: "Milan, Italy", coords: [45.4642, 9.1900], detail: "International Travel & Research" },
+            { name: "Pisa, Italy", coords: [43.7228, 10.4017], detail: "International Travel & Research" },
+            { name: "Venice, Italy", coords: [45.4408, 12.3155], detail: "International Travel & Research" },
+            { name: "Florence, Italy", coords: [43.7696, 11.2558], detail: "International Travel & Research" },
+            { name: "Brussels, Belgium", coords: [50.8503, 4.3517], detail: "Maker Faire Opening Ceremony" },
+            { name: "Sarajevo, Bosnia & Herzegovina", coords: [43.8563, 18.4131], detail: "International Travel & Research" }
+          ];
 
-        locations.forEach(loc => {
-          const marker = L.marker(loc.coords, { icon: pulsingIcon })
-            .addTo(map)
-            .bindPopup(`<h4>${loc.name}</h4><p>${loc.detail}</p>`, { className: 'custom-popup' });
-          bounds.extend(loc.coords);
-        });
+          const pulsingIcon = L.divIcon({
+            className: 'leaflet-pulsing-icon',
+            iconSize: [16, 16],
+            iconAnchor: [8, 8],
+            popupAnchor: [0, -12]
+          });
 
-        map.fitBounds(bounds, { padding: [50, 50] });
+          const bounds = L.latLngBounds();
+
+          locations.forEach(loc => {
+            const marker = L.marker(loc.coords, { icon: pulsingIcon })
+              .addTo(map)
+              .bindPopup(`<h4>${loc.name}</h4><p>${loc.detail}</p>`, { className: 'custom-popup' });
+            bounds.extend(loc.coords);
+          });
+
+          map.fitBounds(bounds, { padding: [50, 50], maxZoom: 5 });
+          
+          setTimeout(() => map.invalidateSize(), 100);
+        }
       });
     </script>
 
