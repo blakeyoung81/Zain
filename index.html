@@ -518,7 +518,7 @@
           // Initialize map with a global view
           const map = L.map('map', {
             zoomControl: true,
-            scrollWheelZoom: true,
+            scrollWheelZoom: false, // Disable to prevent interference with page scrolling
           }).setView([30, 10], 2); // Set initial view to show the world
 
           L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -577,7 +577,7 @@
             map.invalidateSize();
             console.log('Map resized and finalized');
           }, 200);
-        }, 500);
+        }, 100);
       });
     </script>
 

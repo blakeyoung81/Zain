@@ -259,8 +259,22 @@ function initializeSmoothScrolling() {
     });
 }
 
-// Navbar scroll effect
-window.addEventListener('scroll', function() {
+// Throttle function to improve performance
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
+
+// Navbar scroll effect - optimized with throttling
+const navbarScrollEffect = throttle(function() {
     const navbar = document.getElementById('mainNav');
     if (window.scrollY > 100) {
         navbar.style.background = 'rgba(10, 10, 10, 0.98)';
@@ -269,7 +283,9 @@ window.addEventListener('scroll', function() {
         navbar.style.background = 'rgba(10, 10, 10, 0.95)';
         navbar.style.boxShadow = 'none';
     }
-});
+}, 16); // ~60fps
+
+window.addEventListener('scroll', navbarScrollEffect);
 
 // Add typing effect to hero text
 function addTypingEffect() {
