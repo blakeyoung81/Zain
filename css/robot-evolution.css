@@ -70,11 +70,32 @@ html {
 }
 
 #mainNav .navbar-brand {
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     font-size: 1.5rem;
-    color: var(--text-light);
-    text-shadow: none;
+    color: var(--text-light) !important;
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
+}
+
+#mainNav .navbar-nav .nav-item .nav-link {
+    font-size: 90%;
+    font-weight: 400;
+    padding: 0.75em 0;
+    letter-spacing: 1px;
+    color: white;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+#mainNav .navbar-nav .nav-item-evolution-logo {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+#mainNav .navbar-nav .nav-item-evolution-logo .evolution-nav-logo {
+    height: 28px;
+    width: auto;
+    opacity: 0.8;
 }
 
 #mainNav .navbar-nav .nav-link {
@@ -314,7 +335,7 @@ html {
 
 /* ===== EVOLUTION SECTION ===== */
 .evolution-section {
-    padding: 120px 0;
+    padding: 100px 0;
     background: var(--dark-bg);
     position: relative;
     overflow: hidden;
@@ -331,9 +352,11 @@ html {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 140px 40px; /* Increased padding-top */
+    padding: 160px 40px;
     display: flex;
     justify-content: space-between;
+    padding-top: 160px !important;
+    padding-bottom: 160px !important;
 }
 
 .evolution-path {
@@ -622,7 +645,7 @@ html {
 .contact-section {
     padding: 120px 0;
     position: relative;
-    background: var(--dark-bg) !important; /* Override theme */
+    background: #0d1117 !important;
     z-index: 2;
 }
 
@@ -985,7 +1008,6 @@ html {
     padding: 120px 0;
     background: var(--dark-bg);
     position: relative;
-    z-index: 1; /* Ensure proper stacking */
 }
 
 #map {
@@ -993,7 +1015,7 @@ html {
     height: 600px;
     border-radius: 12px;
     border: 1px solid var(--border-color);
-    background-color: var(--card-bg);
+    background-color: #161b22;
 }
 
 .leaflet-popup-content-wrapper {
@@ -1122,11 +1144,11 @@ html {
 .nav-item-evolution-logo {
     display: flex;
     align-items: center;
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 .evolution-nav-logo {
-    height: 35px;
+    height: 25px;
     width: auto;
     opacity: 0.7;
     transition: opacity 0.3s ease;
