@@ -26,15 +26,12 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Orbitron:400,700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Exo+2:300,400,600,700&display=swap" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/robot-evolution.css" rel="stylesheet">
-
-    <!-- Mapbox GL JS -->
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
   </head>
 
@@ -476,59 +473,55 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    
-    <!-- Custom JavaScript -->
-    <script src="js/robot-evolution.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/agency.min.js"></script>
+    <script src="js/custom/robot-evolution.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <script>
-      mapboxgl.accessToken = 'pk.eyJ1IjoiYmxha2V5b3VuZzgxIiwiYSI6ImNseGo0cHp3djA4cGoycW54ZHE0NzhpMmkifQ.o8t3s0n9rn24s6pT522Ggw';
-      const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/dark-v11', // Dark, futuristic theme
-        center: [15, 25], // Centered to show Europe/Africa
-        zoom: 1.5 
+      document.addEventListener('DOMContentLoaded', function () {
+        const map = L.map('map', {
+          zoomControl: false,
+          scrollWheelZoom: false,
+        }).setView([28, 10], 2.5);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+          maxZoom: 18,
+          subdomains: 'abcd'
+        }).addTo(map);
+
+        const locations = [
+          { name: "Orosi Valley, Costa Rica", coords: [9.79, -83.85], detail: "International Travel & Research" },
+          { name: "London, UK", coords: [51.5072, -0.1276], detail: "International Travel & Research" },
+          { name: "Paris, France", coords: [48.8566, 2.3522], detail: "International Travel & Research" },
+          { name: "Cairo, Egypt", coords: [30.0444, 31.2357], detail: "Maker Faire Presentation" },
+          { name: "El Gouna, Egypt", coords: [27.3943, 33.6765], detail: "International Travel & Research" },
+          { name: "Milan, Italy", coords: [45.4642, 9.1900], detail: "International Travel & Research" },
+          { name: "Pisa, Italy", coords: [43.7228, 10.4017], detail: "International Travel & Research" },
+          { name: "Venice, Italy", coords: [45.4408, 12.3155], detail: "International Travel & Research" },
+          { name: "Florence, Italy", coords: [43.7696, 11.2558], detail: "International Travel & Research" },
+          { name: "Brussels, Belgium", coords: [50.8503, 4.3517], detail: "Maker Faire Opening Ceremony" },
+          { name: "Sarajevo, Bosnia & Herzegovina", coords: [43.8563, 18.4131], detail: "International Travel & Research" }
+        ];
+
+        const pulsingIcon = L.divIcon({
+          className: 'leaflet-pulsing-icon',
+          iconSize: [16, 16],
+          iconAnchor: [8, 8],
+          popupAnchor: [0, -12]
+        });
+
+        locations.forEach(loc => {
+          L.marker(loc.coords, { icon: pulsingIcon })
+            .addTo(map)
+            .bindPopup(`<h4>${loc.name}</h4><p>${loc.detail}</p>`, { className: 'custom-popup' });
+        });
       });
-
-      const places = [
-          { name: "Orosi Valley, Costa Rica", description: "International Travel & Research", coords: [-83.85, 9.79] },
-          { name: "London, UK", description: "International Travel & Research", coords: [-0.1278, 51.5074] },
-          { name: "Paris, France", description: "International Travel & Research", coords: [2.3522, 48.8566] },
-          { name: "Cairo, Egypt", description: "Maker Faire Presentation", coords: [31.2357, 30.0444] },
-          { name: "El Gouna, Egypt", description: "International Travel & Research", coords: [33.6763, 27.3946] },
-          { name: "Milan, Italy", description: "International Travel & Research", coords: [9.1900, 45.4642] },
-          { name: "Pisa, Italy", description: "International Travel & Research", coords: [10.4017, 43.7228] },
-          { name: "Venice, Italy", description: "International Travel & Research", coords: [12.3155, 45.4408] },
-          { name: "Florence, Italy", description: "International Travel & Research", coords: [11.2558, 43.7696] },
-          { name: "Brussels, Belgium", description: "Maker Faire Opening Ceremony", coords: [4.3517, 50.8503] },
-          { name: "Sarajevo, Bosnia and Herzegovina", description: "International Travel & Research", coords: [18.4131, 43.8563] },
-      ];
-
-      places.forEach(place => {
-        const popup = new mapboxgl.Popup({ offset: 25 })
-          .setHTML(`<h4>${place.name}</h4><p>${place.description}</p>`);
-
-        new mapboxgl.Marker({ color: 'var(--cyber-blue)' })
-          .setLngLat(place.coords)
-          .setPopup(popup)
-          .addTo(map);
-      });
-
-      // Ensure the map resizes correctly
-      map.on('load', () => {
-          map.resize();
-      });
-
-      // Add a listener to resize the map when the window is resized
-      window.addEventListener('resize', () => {
-          map.resize();
-      });
-
-      // A small timeout can also help ensure rendering completes
-      setTimeout(() => {
-          map.resize();
-      }, 100);
-
     </script>
 
   </body>
