@@ -515,10 +515,11 @@
             return;
           }
 
+          // Initialize map with a global view
           const map = L.map('map', {
             zoomControl: true,
             scrollWheelZoom: true,
-          });
+          }).setView([30, 10], 2); // Set initial view to show the world
 
           L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -542,36 +543,41 @@
 
           console.log('Adding', locations.length, 'markers to map...');
 
-          // Create custom blue circle marker
-          const customIcon = L.divIcon({
-            className: 'leaflet-pulsing-icon',
-            iconSize: [20, 20],
-            iconAnchor: [10, 10],
-            popupAnchor: [0, -15],
-            html: '<div style="width: 100%; height: 100%; background-color: #00BFFF; border-radius: 50%; border: 2px solid rgba(0, 191, 255, 0.8); box-shadow: 0 0 15px rgba(0, 191, 255, 0.6);"></div>'
-          });
-
-          const bounds = L.latLngBounds();
-
+          // Create smaller, more appropriate markers
           locations.forEach((loc, index) => {
-            console.log(`Adding marker ${index + 1}: ${loc.name} at [${loc.coords}]`);
+            console.log(`Adding marker ${index + 1}: ${loc.name} at [${loc.coords[0]}, ${loc.coords[1]}]`);
             
-            const marker = L.marker(loc.coords, { icon: customIcon })
-              .addTo(map)
-              .bindPopup(`<h4>${loc.name}</h4><p>${loc.detail}</p>`, { className: 'custom-popup' });
+            // Create a simple circle marker
+            const marker = L.circleMarker(loc.coords, {
+              radius: 8,
+              fillColor: '#00BFFF',
+              color: '#ffffff',
+              weight: 2,
+              opacity: 1,
+              fillOpacity: 0.8
+            }).addTo(map);
             
-            bounds.extend(loc.coords);
+            // Add popup
+            marker.bindPopup(`<h4>${loc.name}</h4><p>${loc.detail}</p>`, { className: 'custom-popup' });
+            
+            // Add pulsing effect
+            marker.on('mouseover', function() {
+              this.setRadius(12);
+            });
+            
+            marker.on('mouseout', function() {
+              this.setRadius(8);
+            });
           });
 
-          console.log('All markers added. Fitting bounds...');
-          map.fitBounds(bounds, { padding: [30, 30], maxZoom: 4 });
+          console.log('All markers added successfully');
           
           // Force a resize after everything is loaded
           setTimeout(() => {
             map.invalidateSize();
             console.log('Map resized and finalized');
           }, 200);
-        }, 500); // Wait 500ms for everything to load
+        }, 500);
       });
     </script>
 
