@@ -1040,6 +1040,30 @@ html {
     .marker-tooltip h4 {
         font-size: 0.9rem;
     }
+
+    .robot-modal .modal-dialog {
+        margin: 10px;
+    }
+
+    .robot-modal .modal-header {
+        padding: 15px 20px;
+    }
+
+    .robot-modal .modal-title {
+        font-size: 1.2rem;
+    }
+
+    .robot-modal .modal-body {
+        padding: 20px;
+    }
+
+    .carousel-image {
+        height: 300px;
+    }
+
+    .modal-story {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -1074,7 +1098,7 @@ html {
     
     .world-map-container {
         height: 250px;
-        margin: 0 5px;
+        margin: 0;
     }
     
     .map-marker {
@@ -1083,7 +1107,25 @@ html {
     }
 
     #map {
-        height: 350px;
+        min-height: 250px;
+    }
+
+    .robot-modal .modal-title {
+        font-size: 1.1rem;
+    }
+
+    .carousel-image {
+        height: 220px;
+    }
+
+    .carousel-controls {
+        margin-top: 10px;
+    }
+
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
 }
 
