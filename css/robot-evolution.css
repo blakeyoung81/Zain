@@ -528,23 +528,101 @@ html {
     border: 2px solid var(--cyber-blue);
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    color: var(--text-light);
 }
 
 .robot-modal .modal-header {
     border-bottom: 1px solid var(--cyber-blue);
-    background: var(--gradient-primary);
+    background: var(--dark-bg);
+    padding: 20px 30px;
 }
 
 .robot-modal .modal-title {
-    font-family: 'Orbitron', monospace;
-    font-weight: 900;
-    color: var(--text-light);
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 600;
+    color: var(--cyber-blue);
+    font-size: 1.5rem;
 }
 
 .robot-modal .close {
     color: var(--text-light);
     opacity: 1;
     font-size: 2rem;
+}
+
+.robot-modal .modal-body {
+    background: var(--card-bg);
+    color: var(--text-light);
+    padding: 30px;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.modal-story {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.image-carousel {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid var(--border-color);
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.carousel-btn {
+    background: var(--dark-bg);
+    border: 1px solid var(--border-color);
+    color: var(--cyber-blue);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.carousel-btn:hover, .carousel-btn.active {
+    background: var(--cyber-blue);
+    color: var(--dark-bg);
+    border-color: var(--cyber-blue);
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: var(--cyber-blue);
 }
 
 /* ===== ACHIEVEMENTS SECTION ===== */
