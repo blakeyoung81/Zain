@@ -1,0 +1,82 @@
+# ===== Operating System Files =====
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+
+# Windows
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# ===== Development Tools =====
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ===== HTTrack Website Copier =====
+hts-cache/
+hts-log.txt
+backblue.gif
+fade.gif
+mushenghe.github.io/
+
+# ===== Node.js (if using build tools) =====
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.node_repl_history
+
+# ===== Runtime Files =====
+pids
+*.pid
+*.seed
+
+# ===== Logs =====
+logs/
+*.log
+
+# ===== Temporary Files =====
+*.tmp
+*.temp
+.cache/
+
+# ===== Backup Files =====
+*.bak
+*.backup
+
+# ===== Python (if using Python tools) =====
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+ENV/
+
+# ===== Environment Files =====
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ===== Distribution/Build Folders =====
+dist/
+build/
+
+*.code-workspace
+*.mov
+
+*.mov 
